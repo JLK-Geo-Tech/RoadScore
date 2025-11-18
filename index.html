@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoadScore(Local + Map)</title>
+    <title>Geo-Issue Reporter (Local + Map)</title>
     
     <!-- Use Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Leaflet.js CSS -->
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
 
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+
+     crossorigin=""/>
      <!-- Make sure you put this AFTER Leaflet's CSS -->
  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-
     <!-- Custom Stylesheet -->
-     
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header>
             <div class="header-content">
-                <h1>RoadScore</h1>
+                <h1>Geo-Issue Reporter</h1>
                 <p>Report urban issues from your location. (Local Mode)</p>
             </div>
         </header>
@@ -139,7 +137,8 @@
             </div>
         </main>
     </div>
-    <script type="module" src="script.js"></script>
-    
+
+    <!-- Local App Script -->
+    <script src="script.js" type="module" defer></script>
 </body>
 </html>
