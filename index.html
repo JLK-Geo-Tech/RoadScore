@@ -34,16 +34,13 @@
         <textarea id="description" rows="3" style="width: 100%;" placeholder="What is wrong with the road?"></textarea>
         <br><br>
 
-        <!-- 2. THE MAP -->
         <h3>2. Pin Location (Click the map)</h3>
         <p><i>Tip: Use the layers icon in the top-right of the map to filter by rating!</i></p>
-        <div id="map" style="height: 500px; width: 500px;"></div>
+        <div id="map" style="height: 500px; width: 1000px;"></div>
 
-        <!-- 3. SUBMIT BUTTON -->
         <button type="submit" id="submit-btn" disabled>Submit Report</button>
         <span id="status-msg" style="color: red; margin-left: 10px;"></span>
 
-        <!-- REPORT LIST -->
         <h3>Recent Reports</h3>
         <div id="reports-list">
         <p>No reports yet.</p>
@@ -57,25 +54,12 @@
             var selectedLat = null;
             var selectedLng = null;
 
-            
         var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19, attribution: '© OpenStreetMap'
         });
         var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 19, attribution: 'Tiles © Esri'
         });
-// --- 1. SETUP LAYERS ---
-
-        // A. Base Maps (Background)
-        var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19, attribution: '© OpenStreetMap'
-        });
-        var satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 19, attribution: 'Tiles © Esri'
-        });
-
-        // B. Category Groups (For Filtering)
-        // We create a separate "folder" (LayerGroup) for each rating type
         var layer0 = L.layerGroup();
         var layer1 = L.layerGroup();
         var layer2 = L.layerGroup();
@@ -83,7 +67,6 @@
         var layer4 = L.layerGroup();
         var layer5 = L.layerGroup();
 
-        // Organize them for the Control Box
         var baseMaps = {
             "Street View": streetLayer,
             "Satellite View": satelliteLayer
@@ -105,6 +88,22 @@
         });
 
         L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+        map.on('click', function(e) {
+            selectedLat = e.latlng.lat;
+            selectedLng = e.latlng.lng;
+
+            if (tempMarker) {
+                map.removeLayer(tempMarker);
+            }
+
+            tempMarker = L.marker([selectedLat, selectedLng]).addTo(map);
+            tempMarker.bindPopup("Selected Location").openPopup();
+
+            document.getElementById('submit-btn').disabled = false;
+            document.getElementById('status-msg').innerText = "Location ready!";
+            document.getElementById('status-msg').style.color = "green";
+        });
 
         
     </script>
