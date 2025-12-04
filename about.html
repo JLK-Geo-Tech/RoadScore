@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadScore | About Us</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* --- 1. GLOBAL STYLES (Copied from index.html) --- */
+        :root {
+            --primary: #2563eb; 
+            --primary-hover: #1d4ed8;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* --- CRITICAL FIX: CONSISTENT NAVBAR HEIGHT --- */
+        /* 1. Remove default vertical padding from the main navbar element */
+        .navbar {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        /* 2. Apply explicit and equal vertical padding to the brand and links for consistent height */
+        .navbar-brand, .navbar-nav .nav-link {
+            padding-top: 0.75rem !important; 
+            padding-bottom: 0.75rem !important;
+        }
+
+        .container {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            max-width: 900px; /* Limit width for readability */
+        }
+
+        /* --- FIX: NAVBAR ACTIVE LINK CONSISTENCY (Applied to about.html) --- */
+        .navbar-nav .nav-item .nav-link.active {
+            background-color: var(--primary-hover); 
+            border-radius: 8px; 
+        }
+        .navbar-nav .nav-item {
+            padding: 0 5px;
+        }
+        
+        /* --- ABOUT PAGE CONTENT STYLES --- */
+        h1 {
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-section {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        }
+        
+        .feature-card {
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid container">
+        
+        <a class="navbar-brand" href="index.html">RoadScore 🚦</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Reports Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonies.html">Testimonies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+    <div class="container">
+        <div class="about-section">
+            <h1 class="text-center">About RoadScore 🗺️</h1>
+            
+            <p class="lead text-center text-muted">Empowering the community through transparent, location-based road quality reporting.</p>
+
+            <hr>
+
+            <h2>Our Mission</h2>
+            <p>RoadScore was created to bridge the communication gap between citizens and local authorities regarding road infrastructure. We provide a simple, interactive platform where anyone can quickly map and rate road conditions, from small potholes to major surface quality issues. Our goal is to drive accountability and facilitate quicker maintenance and improvement projects based on community input.</p>
+
+            <h2>Key Features</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3>Map-Based Reporting</h3>
+                        <p class="text-muted">Use the interactive map to precisely pin the location of a road defect or quality score.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3>Community Testimonies</h3>
+                        <p class="text-muted">Share your stories about local road conditions and how reports have impacted your daily life.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3>Immediate Feedback</h3>
+                        <p class="text-muted">Reports are instantly visible on the map, allowing others to see current conditions in real-time.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h3>Deletion Accountability</h3>
+                        <p class="text-muted">Ensure data integrity by requiring a specific reason for the deletion of any submitted report.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2>Technology Used</h2>
+            <p>This application is built using standard web technologies for maximum compatibility and ease of deployment:</p>
+            <ul>
+                <li><strong>HTML5 / CSS3:</strong> For structure and styling.</li>
+                <li><strong>Vanilla JavaScript:</strong> For all map interactions, data storage, and form handling.</li>
+                <li><strong>Bootstrap 5:</strong> For responsive design and UI components (like the navbar and modal).</li>
+                <li><strong>Leaflet.js:</strong> The leading open-source library for interactive maps.</li>
+                <li><strong>Local Storage:</strong> Reports and testimonies are saved directly in your browser, maintaining persistence across sessions.</li>
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+</html>

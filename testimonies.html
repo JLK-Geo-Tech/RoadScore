@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadScore | Testimonies</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        /* --- 1. GLOBAL STYLES (Copied from index.html) --- */
+        :root {
+            --primary: #2563eb; 
+            --primary-hover: #1d4ed8;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --star-color: #ffc107; 
+            --success-color: #2ecc71; 
+            --warning-color: #f39c12; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* --- CRITICAL FIX: CONSISTENT NAVBAR HEIGHT --- */
+        /* 1. Remove default vertical padding from the main navbar element */
+        .navbar {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+        }
+        /* 2. Apply explicit and equal vertical padding to the brand and links for consistent height */
+        .navbar-brand, .navbar-nav .nav-link {
+            padding-top: 0.75rem !important; 
+            padding-bottom: 0.75rem !important;
+        }
+
+        .container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        /* --- FIX: NAVBAR ACTIVE LINK CONSISTENCY --- */
+        /* This forces the active link to fill the entire list item space, 
+            making the blue background consistent with the hover effect. */
+        .navbar-nav .nav-item .nav-link.active {
+            background-color: var(--primary-hover); /* Use a slightly darker blue or white to stand out */
+            border-radius: 8px; /* Optional: adds a soft border radius */
+        }
+        .navbar-nav .nav-item {
+            padding: 0 5px; /* Add some padding around the link */
+        }
+
+
+        /* --- 2. FORM STYLES --- */
+        .testimony-form-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+            background: #f9fafb;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* --- 3. TESTIMONY LIST STYLES --- */
+        .testimony-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimony-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimony-card blockquote {
+            font-style: italic;
+            margin: 0;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .testimony-card footer {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .testimony-card footer strong {
+            color: var(--text-main);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        #status-msg-testimony {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 600;
+            min-height: 1.2em;
+            color: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid container">
+        
+        <a class="navbar-brand" href="index.html">RoadScore 🚦</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Reports Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="testimonies.html">Testimonies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+    <div class="container">
+        <div class="testimony-form-card">
+            <h2 class="text-center">Submit Your RoadScore Testimony</h2>
+            <p class="text-center text-muted">Share your experience—whether good or bad—with our local roads and the impact RoadScore reports have had.</p>
+
+            <form id="testimony-form">
+                <div class="mb-3">
+                    <label for="testimony-name" class="form-label">Your Name (or Anonymous)</label>
+                    <input type="text" class="form-control" id="testimony-name" required value="Anonymous">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="testimony-content" class="form-label">Your Testimony / Story</label>
+                    <textarea class="form-control" id="testimony-content" rows="4" required placeholder="Tell us your story about a road condition or a positive change you've seen..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-success w-100 py-2">Submit Testimony</button>
+                <span id="status-msg-testimony"></span>
+            </form>
+        </div>
+
+        <div>
+            <h2 class="mb-4">Community Feedback</h2>
+            <div id="testimonies-list" class="testimony-grid">
+                </div>
+            <p id="no-testimonies-msg" class="text-center text-muted mt-5" style="display: none;">Be the first to share a testimony!</p>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'roadscore_testimonies';
+
+        // --- Load existing testimonies from local storage ---
+        function loadTestimonies() {
+            const storedTestimonies = localStorage.getItem(STORAGE_KEY);
+            return storedTestimonies ? JSON.parse(storedTestimonies) : [];
+        }
+
+        // --- Save testimonies to local storage ---
+        function saveTestimonies(testimonies) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(testimonies));
+        }
+
+        // --- Render all testimonies to the DOM ---
+        function renderTestimonies() {
+            const testimonies = loadTestimonies();
+            const listElement = document.getElementById('testimonies-list');
+            const noMsgElement = document.getElementById('no-testimonies-msg');
+            listElement.innerHTML = ''; 
+
+            if (testimonies.length === 0) {
+                noMsgElement.style.display = 'block';
+                return;
+            }
+
+            noMsgElement.style.display = 'none';
+
+            // Iterate through testimonies and create card HTML
+            testimonies.forEach(testimony => {
+                const card = document.createElement('div');
+                card.className = 'testimony-card';
+                card.innerHTML = `
+                    <blockquote>"${testimony.content}"</blockquote>
+                    <footer>
+                        <strong>— ${testimony.name}</strong>
+                        <small>${new Date(testimony.date).toLocaleDateString()}</small>
+                    </footer>
+                `;
+                listElement.prepend(card); // Add new testimonies to the top
+            });
+        }
+
+        // --- Form Submission Handler ---
+        document.getElementById('testimony-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('testimony-name').value.trim() || 'Anonymous';
+            const content = document.getElementById('testimony-content').value.trim();
+            const statusMsg = document.getElementById('status-msg-testimony');
+            const successColor = getComputedStyle(document.documentElement).getPropertyValue('--success-color').trim();
+            const warningColor = getComputedStyle(document.documentElement).getPropertyValue('--warning-color').trim();
+
+
+            if (content.length < 10) {
+                statusMsg.innerText = "Please write a longer testimony (min. 10 characters).";
+                statusMsg.style.color = warningColor;
+                return;
+            }
+
+            const newTestimony = {
+                id: Date.now(), // Use timestamp as a unique ID
+                name: name,
+                content: content,
+                date: new Date().toISOString()
+            };
+
+            const testimonies = loadTestimonies();
+            testimonies.push(newTestimony);
+            saveTestimonies(testimonies);
+
+            // Clear the content field and update the display
+            document.getElementById('testimony-content').value = '';
+            document.getElementById('testimony-name').value = 'Anonymous';
+            renderTestimonies(); 
+
+            statusMsg.innerText = "✅ Testimony submitted successfully!";
+            statusMsg.style.color = successColor;
+            setTimeout(() => { statusMsg.innerText = ''; }, 3000); 
+        });
+
+        // --- Initial Load ---
+        window.onload = renderTestimonies;
+
+    </script>
+</body>
+</html>
